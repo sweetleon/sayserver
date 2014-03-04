@@ -16,13 +16,8 @@ http.createServer(function(request, response) {
 
     response.write("Saying: ");
     response.write("" + query.message);
-    response.write("second time shows" + query.message);
 
-//    console.log(query.message);
-
-    var command = "say '" + query.message + "'";
-    console.log(command);
-    child = exec(command, function (error, stdout, stderr) {
+    child = exec('say', function (error, stdout, stderr) {
         if (error !== null) {
             console.log('exec error: ' + error);
             console.log("STDOUT: " + stdout);
@@ -32,7 +27,7 @@ http.createServer(function(request, response) {
             response.write("STDERR: " + stderr);
         }
     });
-//    child.stdin.
+    child.stdin.end(query.message);
 
     response.end("");
 
