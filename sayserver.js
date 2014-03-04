@@ -17,7 +17,7 @@ http.createServer(function(request, response) {
     response.write("Saying: ");
     response.write("" + query.message);
 
-    child = exec('say', function (error, stdout, stderr) {
+    child = exec('(say || espeak)', function (error, stdout, stderr) {
         if (error !== null) {
             console.log('exec error: ' + error);
             console.log("STDOUT: " + stdout);
